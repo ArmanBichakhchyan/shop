@@ -1,4 +1,9 @@
+// require('dotenv').config();
 const app = require("./app")
-const port =process.env.port || 5000
+const mongoose = require('mongoose');
 
-app.listen(port,()=> console.log(`server running:${port}`))
+const port =process.env.PORT|| 5000
+mongoose.connect('mongodb://127.0.0.1:27017/shop')
+.then(() => console.log('Connected!'))
+.catch(error =>console.log(error))
+app.listen(port, ()=>console.log(`server run:${port}`))
